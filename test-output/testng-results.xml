@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="2" failed="0" skipped="1">
   <reporter-output>
     <line>
       <![CDATA[STEP1]]>
@@ -10,43 +10,81 @@
     <line>
       <![CDATA[STEP3]]>
     </line>
+    <line>
+      <![CDATA[STEP4]]>
+    </line>
   </reporter-output>
-  <suite started-at="2021-06-16T22:03:10 IST" name="Default suite" finished-at="2021-06-16T22:05:14 IST" duration-ms="124413">
+  <suite started-at="2021-06-17T14:34:41 IST" name="Default suite" finished-at="2021-06-17T14:35:53 IST" duration-ms="71929">
     <groups>
     </groups>
-    <test started-at="2021-06-16T22:03:10 IST" name="Default test" finished-at="2021-06-16T22:05:14 IST" duration-ms="124413">
+    <test started-at="2021-06-17T14:34:41 IST" name="Default test" finished-at="2021-06-17T14:35:53 IST" duration-ms="71929">
       <class name="com.testing.ts.scripts.LoginTestRunner">
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.testing.ts.scripts.LoginTestRunner@14c01636]" started-at="2021-06-16T22:03:10 IST" name="beforeTest" finished-at="2021-06-16T22:03:10 IST" duration-ms="33" status="PASS">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.testing.ts.scripts.LoginTestRunner@4cc6fa2a]" started-at="2021-06-17T14:34:41 IST" name="beforeTest" finished-at="2021-06-17T14:34:41 IST" duration-ms="32" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="testscript(java.util.Hashtable)[pri:0, instance:com.testing.ts.scripts.LoginTestRunner@14c01636]" started-at="2021-06-16T22:03:10 IST" name="testscript" data-provider="getDetails" finished-at="2021-06-16T22:04:07 IST" duration-ms="57566" status="PASS">
+        <test-method signature="testscript(java.util.Hashtable)[pri:0, instance:com.testing.ts.scripts.LoginTestRunner@4cc6fa2a]" started-at="2021-06-17T14:34:41 IST" name="testscript" data-provider="getDetails" finished-at="2021-06-17T14:34:42 IST" duration-ms="205" status="SKIP">
           <params>
             <param index="0">
               <value>
-                <![CDATA[{Test Case Type=Positive, ErrorMessage=, Result=, passedScreenShot=, failedScreenShot=, Runmode=Y, userId=tomsmith, password=SuperSecretPassword!, expResult=Pass}]]>
+                <![CDATA[{Test Case Type=Test Case Type, ErrorMessage=ErrorMessage, Result=Result, passedScreenShot=passedScreenShot, failedScreenShot=failedScreenShot, Runmode=Runmode, userId=userId, password=password, expResult=expResult}]]>
               </value>
             </param>
           </params>
+          <exception class="org.testng.SkipException">
+            <message>
+              <![CDATA[Skipping the test]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.testng.SkipException: Skipping the test
+at com.testing.ts.hooks.TestNGHooks.isTestcaseExecutable(TestNGHooks.java:106)
+at com.testing.ts.scripts.LoginTestRunner.testscript(LoginTestRunner.java:27)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.testng.SkipException -->
           <reporter-output>
             <line>
               <![CDATA[STEP1]]>
             </line>
           </reporter-output>
         </test-method> <!-- testscript -->
-        <test-method is-config="true" signature="closesite()[pri:0, instance:com.testing.ts.scripts.LoginTestRunner@14c01636]" started-at="2021-06-16T22:04:07 IST" name="closesite" finished-at="2021-06-16T22:04:12 IST" duration-ms="4624" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closesite -->
-        <test-method is-config="true" signature="setStatus()[pri:0, instance:com.testing.ts.scripts.LoginTestRunner@14c01636]" started-at="2021-06-16T22:04:12 IST" name="setStatus" finished-at="2021-06-16T22:04:12 IST" duration-ms="169" status="PASS">
+        <test-method is-config="true" signature="setStatus()[pri:0, instance:com.testing.ts.scripts.LoginTestRunner@4cc6fa2a]" started-at="2021-06-17T14:34:42 IST" name="setStatus" finished-at="2021-06-17T14:34:42 IST" duration-ms="120" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setStatus -->
-        <test-method signature="testscript(java.util.Hashtable)[pri:0, instance:com.testing.ts.scripts.LoginTestRunner@14c01636]" started-at="2021-06-16T22:04:12 IST" name="testscript" data-provider="getDetails" finished-at="2021-06-16T22:05:08 IST" duration-ms="56203" status="PASS">
+        <test-method signature="testscript(java.util.Hashtable)[pri:0, instance:com.testing.ts.scripts.LoginTestRunner@4cc6fa2a]" started-at="2021-06-17T14:34:42 IST" name="testscript" data-provider="getDetails" finished-at="2021-06-17T14:35:10 IST" duration-ms="27902" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[{Test Case Type=negative, ErrorMessage=, Result=, passedScreenShot=, failedScreenShot=, Runmode=Y, userId=tomsmith, password=password123, expResult=Fail}]]>
+                <![CDATA[{Test Case Type=Positive, ErrorMessage=, Result=Skipped, passedScreenShot=, failedScreenShot=, Runmode=Y, userId=tomsmith, password=SuperSecretPassword!, expResult=Pass}]]>
               </value>
             </param>
           </params>
@@ -56,18 +94,32 @@
             </line>
           </reporter-output>
         </test-method> <!-- testscript -->
-        <test-method is-config="true" signature="closesite()[pri:0, instance:com.testing.ts.scripts.LoginTestRunner@14c01636]" started-at="2021-06-16T22:05:08 IST" name="closesite" finished-at="2021-06-16T22:05:13 IST" duration-ms="4701" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closesite -->
-        <test-method is-config="true" signature="setStatus()[pri:0, instance:com.testing.ts.scripts.LoginTestRunner@14c01636]" started-at="2021-06-16T22:05:13 IST" name="setStatus" finished-at="2021-06-16T22:05:13 IST" duration-ms="138" status="PASS">
+        <test-method is-config="true" signature="setStatus()[pri:0, instance:com.testing.ts.scripts.LoginTestRunner@4cc6fa2a]" started-at="2021-06-17T14:35:10 IST" name="setStatus" finished-at="2021-06-17T14:35:10 IST" duration-ms="231" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setStatus -->
-        <test-method is-config="true" signature="close()[pri:0, instance:com.testing.ts.scripts.LoginTestRunner@14c01636]" started-at="2021-06-16T22:05:13 IST" name="close" finished-at="2021-06-16T22:05:14 IST" duration-ms="945" status="PASS">
+        <test-method signature="testscript(java.util.Hashtable)[pri:0, instance:com.testing.ts.scripts.LoginTestRunner@4cc6fa2a]" started-at="2021-06-17T14:35:10 IST" name="testscript" data-provider="getDetails" finished-at="2021-06-17T14:35:47 IST" duration-ms="37730" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Test Case Type=negative, ErrorMessage=, Result=Passed, passedScreenShot=, failedScreenShot=, Runmode=Y, userId=tomsmith, password=password123, expResult=Fail}]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
             <line>
               <![CDATA[STEP3]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- testscript -->
+        <test-method is-config="true" signature="setStatus()[pri:0, instance:com.testing.ts.scripts.LoginTestRunner@4cc6fa2a]" started-at="2021-06-17T14:35:47 IST" name="setStatus" finished-at="2021-06-17T14:35:48 IST" duration-ms="113" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setStatus -->
+        <test-method is-config="true" signature="close()[pri:0, instance:com.testing.ts.scripts.LoginTestRunner@4cc6fa2a]" started-at="2021-06-17T14:35:48 IST" name="close" finished-at="2021-06-17T14:35:53 IST" duration-ms="5554" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[STEP4]]>
             </line>
           </reporter-output>
         </test-method> <!-- close -->

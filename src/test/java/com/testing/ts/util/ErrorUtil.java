@@ -8,6 +8,8 @@ import java.util.Map;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
+
+
 public class ErrorUtil {
 	private static Map<ITestResult,List> verificationFailuresMap = new HashMap<ITestResult,List>();
 	

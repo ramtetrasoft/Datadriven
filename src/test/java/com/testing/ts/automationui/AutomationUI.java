@@ -108,7 +108,7 @@ public class AutomationUI extends javax.swing.JFrame
 			try {
 				/*System.out.println(System.getProperty("user.dir"));
 				Runtime.getRuntime().exec("cmd /c start \"\" "+ fileLocation + batchName);*/
-				String batch= "cmd /c start \"\""+" "+"\""+ System.getProperty("user.dir")+System.getProperty("file.separator")+"\\SeleniumAutoTS_Sanity.bat";
+				String batch= "cmd /c start \"\""+" "+"\""+ System.getProperty("user.dir")+System.getProperty("file.separator")+"\\seleniumautots.bat";
 				//String batch= "cmd /c start \"\""+" "+"\""+"C:\\Users\\tsipl1805\\eclipse-workspace\\org.ts.seleniumauto\\SeleniumAutoTS_Sanity.bat";
 				Runtime.getRuntime().exec(batch);
 			} catch (IOException e) {

@@ -134,7 +134,8 @@ public class BaseClass {
 	}
 
 	
-	public WebElement fluentWait(final By locator) {
+	public WebElement fluentWait(final By locator)
+	{
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(10, TimeUnit.SECONDS)
 				.pollingEvery(1, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
 
@@ -302,32 +303,7 @@ public class BaseClass {
 		}
 	}
 
-	public void NavigateTo(String ProgramTitle) throws Exception {
-		homeWindow = new HomePage(driver);
-		Thread.sleep(2000);
-		homeWindow.clickOn_ContactUs();
-		waitForNoOfWindows(1);
-		Thread.sleep(2000);
-		//switchToTitlewithoutAssert(ProgramTitle);
-		//switchToTitle(ProgramTitle);
-		Thread.sleep(1000);
-		extentTest.log(LogStatus.PASS, "Navigated to <b>" + ProgramTitle + "</b> SCREEN");
-		ReportLogAs("Navigated to " + ProgramTitle, "PASS");
-	}
-	public void NavigateToLigin(String ProgramTitle) throws Exception {
-		homeWindow = new HomePage(driver);
-		Thread.sleep(2000);
-		homeWindow.clickOn_signin();
-		waitForNoOfWindows(1);
-		Thread.sleep(2000);
-		//switchToTitlewithoutAssert(ProgramTitle);
-		//switchToTitle(ProgramTitle);
-		Thread.sleep(1000);
-		extentTest.log(LogStatus.PASS, "Navigated to <b>" + ProgramTitle + "</b> SCREEN");
-		ReportLogAs("Navigated to " + ProgramTitle, "PASS");
-	}
 	
-
 	public boolean switchToTitle(String title) throws InterruptedException {
 		boolean switched = false;
 		try {
@@ -643,13 +619,6 @@ public class BaseClass {
 		driver = null;
 		Thread.sleep(2000);
 	}
-	public String setDateAsCBD() {
-		String date = driver.findElement(By.xpath("html/body/div[4]/div[4]/table/tbody/tr[2]/td[2]")).getText();
-		APPLICATION_LOGS.debug("Date:............" + date);
-		String getDate[] = date.split(":");
-		return getDate[1].trim();
-	}
-
 	public void waitForFrame(String frame) throws InterruptedException {
 		Thread.sleep(1000);
 		WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -1036,7 +1005,7 @@ public class BaseClass {
 		Assert.assertTrue(element.isDisplayed(), assertMesage);
 	}
 
-	// done by D.sivaranjani
+	
 	public void F5window(String inputData) throws InterruptedException {
 
 		Thread.sleep(2000);
@@ -1115,108 +1084,7 @@ public class BaseClass {
 		}
 	}
 
-	public void getElementFromGrid(String messAmount, String sheetName, int dataRowNo, String BatchNumber2)
-			throws InterruptedException {
-		while (true) {
-			boolean checked = false;
-			String MSG = driver
-					.findElement(By
-							.xpath("//html/body/form/div[1]/div[2]/div/div/table/tbody/tr[2]/td/div/div/table/tbody/tr/td[3]"))
-					.getText();
-			int Rows = driver
-					.findElements(By
-							.xpath("//html/body/form/div[1]/div[2]/div/div/table/tbody/tr[2]/td/div/div/table/tbody/tr"))
-					.size();
-			APPLICATION_LOGS.debug("Total rows are " + Rows + "\n" + "process.............." + MSG);
-			extentTest.log(LogStatus.INFO,
-					"Total rows are <b>" + Rows + "</b>\n" + "process..............<b>" + MSG + "</b>");
-			int i;
-			for (i = 1; i <= Rows; i++) {
-				APPLICATION_LOGS.debug("data in colume .................." + i + ".........."
-						+ driver.findElement(By
-								.xpath("//html/body/form/div[1]/div[2]/div/div/table/tbody/tr[2]/td/div/div/table/tbody/tr["
-										+ i + "]/td[3]"))
-								.getText());
-
-				extentTest.log(LogStatus.INFO,
-						"data in colume ..................<b>" + i + "</b>..........<b>"
-								+ driver.findElement(By
-										.xpath("//html/body/form/div[1]/div[2]/div/div/table/tbody/tr[2]/td/div/div/table/tbody/tr["
-												+ i + "]/td[3]"))
-										.getText()
-								+ "</b>");
-
-				APPLICATION_LOGS.debug("Amt in colume .................." + i + ".........."
-						+ driver.findElement(By
-								.xpath("//html/body/form/div[1]/div[2]/div/div/table/tbody/tr[2]/td/div/div/table/tbody/tr["
-										+ i + "]/td[10]"))
-								.getText());
-
-				extentTest.log(LogStatus.INFO,
-						"Amt in colume ..................<b>" + i + "</b>..........<b>"
-								+ driver.findElement(By
-										.xpath("//html/body/form/div[1]/div[2]/div/div/table/tbody/tr[2]/td/div/div/table/tbody/tr["
-												+ i + "]/td[10]"))
-										.getText()
-								+ "</b>");
-
-				if (driver.findElement(
-						By.xpath("//html/body/form/div[1]/div[2]/div/div/table/tbody/tr[2]/td/div/div/table/tbody/tr["
-								+ i + "]/td[3]"))
-						.getText().trim().equalsIgnoreCase(BatchNumber2)) {
-					WebElement Scrollto_Active = driver.findElement(By
-							.xpath("//html/body/form/div[1]/div[2]/div/div/table/tbody/tr[2]/td/div/div/table/tbody/tr["
-									+ i + "]/td[3]"));
-					WebElement Scrollto_Amount = driver.findElement(By
-							.xpath("//html/body/form/div[1]/div[2]/div/div/table/tbody/tr[2]/td/div/div/table/tbody/tr["
-									+ i + "]/td[10]"));
-					Thread.sleep(1000);
-					Scrollto_Active.click();
-					String getScrollAmount = Scrollto_Amount.getText();
-					String getExactAmtOnArray[] = getScrollAmount.split(".");
-					String getExactAmt = getExactAmtOnArray[0];
-					Thread.sleep(1000);
-					APPLICATION_LOGS.debug("get amount from account ledger view = " + getExactAmt);
-					extentTest.log(LogStatus.INFO, "get amount from account ledger view = <b>" + getExactAmt + "</b>");
-					APPLICATION_LOGS.debug("get mess content = " + messAmount);
-					extentTest.log(LogStatus.INFO, "get mess content = <b>" + messAmount + "</b>");
-					if (!(messAmount.equalsIgnoreCase(getScrollAmount))) {
-						Assert.fail();
-					}
-					Thread.sleep(1000);
-					// getScreenshot("AccountLedgerViewScreenshot",
-					// sheetName,dataRowNo, CMS);
-					checked = true;
-					break;
-				}
-			}
-			APPLICATION_LOGS.debug("boolean Value------------------------" + checked);
-			extentTest.log(LogStatus.INFO, "boolean Value------------------------<b>" + checked + "</b>");
-			if (checked) {
-				APPLICATION_LOGS.debug("got the number--------------");
-
-				break;
-
-			}
-			if (!checked) {
-				if (Rows == 10 && driver
-						.findElement(By.xpath("//html/body/form/div[1]/div[2]/div/table/tbody/tr/td[2]/input[2]"))
-						.isEnabled()) {
-					driver.findElement(By.xpath("//html/body/form/div[1]/div[2]/div/table/tbody/tr/td[2]/input[2]"))
-							.click();
-				} else if (Rows < 10 && !checked) {
-					DEMOgetVal.setCellData(sheetName, "Msg", dataRowNo, BatchNumber2 + "Does Not Exit");
-					extentTest.log(LogStatus.FAIL, "<b>Under matching with the given batch Number</b>");
-					Assert.fail("Under matching with the given batch Number");
-					break;
-				}
-
-				APPLICATION_LOGS.debug("Its Not matching with the given batch Number.....");
-
-			}
-		}
-
-	}
+	
 
 	/*********************************************************************************************************/
 
@@ -1479,161 +1347,8 @@ public class BaseClass {
 		ATUReports.add(msg, "Testing", "--", "--", status, null);
 	}
 	
-	//ebanking function
-	public void setEbankData(WebElement element, String inputData) {// updated on 19thJune2017
-		try {
-			if (!inputData.isEmpty()) {
-				//element.click();
-				element.click();
-				element.click();
-				element.clear();
-				Thread.sleep(2000);
-				//element.sendKeys(Keys.BACK_SPACE);
-				element.sendKeys(inputData);
-				Thread.sleep(5000);
-				element.sendKeys(Keys.ARROW_DOWN);
-				Thread.sleep(2000);
-				element.sendKeys(Keys.ENTER);
-				Thread.sleep(2000);
-				element.sendKeys(Keys.TAB);
-				Thread.sleep(1000);
-				System.out.println();
-				ReportLogAs("Successfully typed for " + element.getAttribute("id") + " : " + inputData, "PASS");
-				APPLICATION_LOGS.debug("Successfully typed for " + element.getAttribute("id") + " : " + inputData);
-				extentTest.log(LogStatus.PASS,
-						"Successfully typed for <b>" + element.getAttribute("id") + " : " + inputData + "</b>");
-			} else if (inputData.isEmpty()) {
-				element.sendKeys(Keys.TAB);
-				APPLICATION_LOGS.debug("No data for the field" + element.getAttribute("id"));
-				extentTest.log(LogStatus.PASS, "No data for the field <b>" + element.getAttribute("id") + "</b>");
-			}
-		} catch (NoSuchElementException e1) {
-			ReportLogAs(element + " NOT FOUND TO ENTER " + inputData, "FAILED");
-			APPLICATION_LOGS.debug(element + " NOT FOUND TO ENTER " + inputData);
-			extentTest.log(LogStatus.FAIL, "<b>" + element + "</b> NOT FOUND TO ENTER <b>" + inputData + "</b>");
-			Assert.fail(element + " NOT FOUND TO ENTER " + inputData);
-		} catch (ElementNotVisibleException e2) {
-			ReportLogAs(element + " NOT VISIBLE TO ENTER " + inputData, "FAILED");
-			APPLICATION_LOGS.debug(element + " NOT VISIBLE TO ENTER " + inputData);
-			extentTest.log(LogStatus.FAIL, "<b>" + element + " NOT VISIBLE TO ENTER " + inputData + "</b>");
-			Assert.fail(element + " NOT VISIBLE TO ENTER " + inputData);
-		} catch (Exception e3) {
-			e3.printStackTrace();
-			extentTest.log(LogStatus.FAIL, "<b>" + e3.getLocalizedMessage() + "</b>");
-		}
-	}
 	
-	public void setEbankDataText(WebElement element, String inputData) {// updated on 19thJune2017
-		try {
-			if (!inputData.isEmpty()) {
-				element.click();
-				element.click();
-				element.clear();
-				element.sendKeys(inputData);
-				Thread.sleep(2000);
-				element.sendKeys(Keys.TAB);
-				Thread.sleep(2000);
-				System.out.println();
-				APPLICATION_LOGS.debug("Successfully typed for " + element.getAttribute("id") + " : " + inputData);
-				extentTest.log(LogStatus.PASS,
-						"Successfully typed for <b>" + element.getAttribute("id") + " : " + inputData + "</b>");
-				ReportLogAs("Successfully typed for <b>" + element.getAttribute("id") + " : " + inputData + "</b>", "pass");
-			} else if (inputData.isEmpty()) {
-				element.sendKeys(Keys.TAB);
-				APPLICATION_LOGS.debug("No data for the field" + element.getAttribute("id"));
-				extentTest.log(LogStatus.PASS, "No data for the field <b>" + element.getAttribute("id") + "</b>");
-				ReportLogAs("No data for the field <b>" + element.getAttribute("id") + "</b>", "pass");
-			}
-		} catch (NoSuchElementException e1) {
-			APPLICATION_LOGS.debug(element + " NOT FOUND TO ENTER " + inputData);
-			extentTest.log(LogStatus.FAIL, "<b>" + element + "</b> NOT FOUND TO ENTER <b>" + inputData + "</b>");
-			ReportLogAs("<b>" + element + "</b> NOT FOUND TO ENTER <b>" + inputData + "</b>", "fail");
-			Assert.fail(element + " NOT FOUND TO ENTER " + inputData);
-		} catch (ElementNotVisibleException e2) {
-			APPLICATION_LOGS.debug(element + " NOT VISIBLE TO ENTER " + inputData);
-			extentTest.log(LogStatus.FAIL, "<b>" + element + " NOT VISIBLE TO ENTER " + inputData + "</b>");
-			ReportLogAs("<b>" + element + "<b>" + element + " NOT VISIBLE TO ENTER " + inputData + "</b>", "fail");
-			Assert.fail(element + " NOT VISIBLE TO ENTER " + inputData);
-		} catch (Exception e3) {
-		
-		}
-	}
 	
-	public void selectEbankDataByIndex(WebElement element, String inputData) {// updated on 19thJune2017
-		try {
-			Select sc= new Select(element);
-			element.click();
-			if (!inputData.isEmpty()) {
-				try {
-					sc.selectByIndex(Integer.parseInt(inputData));
-				} catch (Exception e) {
-					sc.selectByValue(inputData);
-				}
-				
-				Thread.sleep(1000);
-				//element.sendKeys(Keys.ENTER);
-				System.out.println();
-				APPLICATION_LOGS.debug("Successfully typed for : " + inputData);
-				extentTest.log(LogStatus.PASS,
-						"Successfully typed for " + inputData + "</b>");
-				ReportLogAs("Successfully typed for " + inputData + "</b>","pass");
-			} else if (inputData.isEmpty()) {
-				element.sendKeys(Keys.TAB);
-				APPLICATION_LOGS.debug("No data for the field");
-				extentTest.log(LogStatus.PASS, "No data for the field");
-				ReportLogAs("No data for the field", "pass");
-			}
-		} catch (NoSuchElementException e1) {
-			APPLICATION_LOGS.debug(element + " NOT FOUND TO ENTER " + inputData);
-			extentTest.log(LogStatus.FAIL, "<b>" + element + "</b> NOT FOUND TO ENTER <b>" + inputData + "</b>");
-			ReportLogAs("<b>" + element + "</b> NOT FOUND TO ENTER <b>" + inputData + "</b>", "fail");
-			Assert.fail(element + " NOT FOUND TO ENTER " + inputData);
-		} catch (ElementNotVisibleException e2) {
-			APPLICATION_LOGS.debug(element + " NOT VISIBLE TO ENTER " + inputData);
-			extentTest.log(LogStatus.FAIL, "<b>" + element + " NOT VISIBLE TO ENTER " + inputData + "</b>");
-			ReportLogAs("<b>" + element + "</b> NOT VISIBLE TO ENTER <b>" + inputData + "</b>", "fail");
-			Assert.fail(element + " NOT VISIBLE TO ENTER " + inputData);
-		} catch (Exception e3) {
-
-		}
-	}
-
-	public void selectEbankData(WebElement element, String inputData) {// updated on 19thJune2017
-		try {
-			Select sc= new Select(element);
-			if (!inputData.isEmpty()) {
-				
-				element.click();
-				Thread.sleep(1000);
-				sc.selectByVisibleText(inputData);
-				Thread.sleep(2000);
-				element.sendKeys(Keys.TAB);
-				System.out.println();
-				ReportLogAs("Successfully typed for " + element.getAttribute("id") + " : " + inputData, "PASS");
-				APPLICATION_LOGS.debug("Successfully typed for " + element.getAttribute("id") + " : " + inputData);
-				extentTest.log(LogStatus.PASS,
-						"Successfully typed for <b>" + element.getAttribute("id") + " : " + inputData + "</b>");
-			} else if (inputData.isEmpty()) {
-				element.sendKeys(Keys.TAB);
-				APPLICATION_LOGS.debug("No data for the field" + element.getAttribute("id"));
-				extentTest.log(LogStatus.PASS, "No data for the field <b>" + element.getAttribute("id") + "</b>");
-				ReportLogAs("No data for the field" + element.getAttribute("id"), "PASS");
-			}
-		} catch (NoSuchElementException e1) {
-			ReportLogAs(element + " NOT FOUND TO ENTER " + inputData, "FAILED");
-			APPLICATION_LOGS.debug(element + " NOT FOUND TO ENTER " + inputData);
-			extentTest.log(LogStatus.FAIL, "<b>" + element + "</b> NOT FOUND TO ENTER <b>" + inputData + "</b>");
-			Assert.fail(element + " NOT FOUND TO ENTER " + inputData);
-		} catch (ElementNotVisibleException e2) {
-			ReportLogAs(element + " NOT VISIBLE TO ENTER " + inputData, "FAILED");
-			APPLICATION_LOGS.debug(element + " NOT VISIBLE TO ENTER " + inputData);
-			extentTest.log(LogStatus.FAIL, "<b>" + element + " NOT VISIBLE TO ENTER " + inputData + "</b>");
-			Assert.fail(element + " NOT VISIBLE TO ENTER " + inputData);
-		} catch (Exception e3) {
-			e3.printStackTrace();
-			extentTest.log(LogStatus.FAIL, "<b>" + e3.getLocalizedMessage() + "</b>");
-		}
-	}
 	
 	//Uploading Files by using Robot
 		public void uploadFile(String fileLocation) {
@@ -1643,7 +1358,6 @@ public class BaseClass {
 	            //native key strokes for CTRL, V and ENTER keys
 	           Thread.sleep(3000);
 	            Robot r = new Robot();
-		
 	            r.keyPress(KeyEvent.VK_CONTROL);
 				r.keyPress(KeyEvent.VK_V);
 				r.keyRelease(KeyEvent.VK_CONTROL);

@@ -122,13 +122,6 @@ public class TestNGHooks extends BaseClass {
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		return driver;
 	}
-
-	@AfterMethod
-	public void closesite() throws IOException, InterruptedException
-	{
-		driver.close();
-		killIeDriverServer();
-	}
 	
 
 	@AfterTest
@@ -143,7 +136,8 @@ public class TestNGHooks extends BaseClass {
 		// extent.flush();
 
 		flushExtentReport();
-		
+		driver.close();
+		killIeDriverServer();
 		suiteResults();
 	}
 
